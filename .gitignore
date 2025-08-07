@@ -1,22 +1,51 @@
-# Node modules
+# === DEPENDENCIES ===
 node_modules/
+.pnpm/
+.yarn/
+.yarnrc.yml
 
-# Build output
+# === BUILD OUTPUT ===
 dist/
 build/
+coverage/
 
-# Environnement
+# === ENV FILES ===
 .env
-.env.*.local
+.env.*
+!.env.example
 
-# Logs
-*.log
+# === LOG FILES ===
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# IDE
-.vscode/
-.idea/
-
-# OS
+# === SYSTEM FILES ===
 .DS_Store
 Thumbs.db
 
+# === VITE CACHE ===
+.vite/
+.vite-cache/
+
+# === IDE / EDITOR CONFIGS ===
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# === TEST OUTPUT ===
+jest-test-results.json
+
+# === BACKEND CONFIG ===
+*.pem
+*.key
+*.crt
+*.p12
+credentials.json
+config/secret.*
+
+# === TYPESCRIPT BUILD ===
+*.tsbuildinfo
