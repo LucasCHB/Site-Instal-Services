@@ -1,10 +1,7 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+/* Import des pages */
 import Homepage from './pages/Homepage';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -13,38 +10,29 @@ import Portfolio from './pages/Portfolio';
 import Services from './pages/Services';
 import Legal from './pages/Legal';
 
+/* Import des composants */
+import Navbar from './components/Navbar';
+
 function App() {
-  const [count, setCount] = useState(0);
   const [message, setMessage] = useState('');
 
   useEffect(() => {
     fetch('/api/hello')
       .then(response => response.json())
-      .then(data => {
-        setMessage(data.message); 
-      })
-      .catch(error => {
-        console.error('Error fetching message:', error);
-      });
+      .then(data => setMessage(data.message))
+      .catch(error => console.error('Error fetching message:', error));
   }, []);
 
   return (
     <BrowserRouter>
-      <div className="App">
-        <header className="App-header">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-          <img src={reactLogo} className="logo react" alt="React logo" />
-          <h1>Vite + React</h1>
-          <p>{message}</p>
-          <div className="card">
-            <button onClick={() => setCount(count + 1)}>
-              count is {count}
-            </button>
-            <p>
-              Edit <code>src/App.jsx</code> and save to test HMR
-            </p>
+      <Navbar />
+      <main className="pt-16">
+        {/* Affiche le message du backend si dispo */}
+        {message && (
+          <div className="text-center p-4 bg-blue-50 text-blue-800">
+            {message}
           </div>
-        </header>
+        )}
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/about" element={<About />} />
@@ -54,9 +42,9 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/legal" element={<Legal />} />
         </Routes>
-      </div>
-    </BrowserRouter> 
-  )
+      </main>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
