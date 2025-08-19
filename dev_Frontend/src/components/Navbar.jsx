@@ -12,7 +12,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="text-2xl font-bold text-blue-600">
-              MonSite
+              Instal Services
             </Link>
           </div>
 
@@ -22,6 +22,9 @@ export default function Navbar() {
             <Link to="/services" className="hover:text-blue-500">Services</Link>
             <Link to="/about" className="hover:text-blue-500">À propos</Link>
             <Link to="/contact" className="hover:text-blue-500">Contact</Link>
+            <Link to="/legal" className="hover:text-blue-500">Mentions légales</Link>
+            <Link to="/actus" className="hover:text-blue-500">Actus</Link>
+            <Link to="/portfolio" className="hover:text-blue-500">Portfolio</Link>
           </nav>
 
           {/* Bouton mobile */}
@@ -42,8 +45,11 @@ export default function Navbar() {
           <nav className="flex flex-col space-y-2 p-4">
             <Link to="/" onClick={() => setIsOpen(false)}>Accueil</Link>
             <Link to="/services" onClick={() => setIsOpen(false)}>Services</Link>
-            <Link to="/about" onClick={() => setIsOpen(false)}>À propos</Link>
             <Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
+            <Link to="/about" onClick={() => setIsOpen(false)}>À propos</Link>
+            <Link to="/legal" onClick={() => setIsOpen(false)}>Mentions légales</Link>
+            <Link to="/actus" onClick={() => setIsOpen(false)}>Actus</Link>
+            <Link to="/portfolio" onClick={() => setIsOpen(false)}>Portfolio</Link>
           </nav>
         </div>
       )}

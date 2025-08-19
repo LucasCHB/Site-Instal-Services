@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3001;
 
 app.get('/api/hello', (req, res) => {
-  res.json({ message: 'Hello from Node backend with PAPALUGA THE GYAT' });
+  res.json({ message: 'HELLO FROM BACKEND' });
 });
 
 app.listen(PORT, () => {
