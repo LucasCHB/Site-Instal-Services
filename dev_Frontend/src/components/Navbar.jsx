@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { motion } from "framer-motion";
+
+// Import du logo
 import logo from "../assets/new-logo.png";
 
 // Variants pour l'animation du container
@@ -45,29 +47,60 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="relative bg-white shadow-md fixed w-full z-20">
+    <header className=" bg-white shadow-md fixed w-full z-20">
       {/*Vague en arriere-plan*/}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10 overflow-hidden">
         <svg
-          xmlns="http://www.w3.org/2000/svg"          
-          viewBox="0 0 900 601"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"          
+          viewBox="0 0 900 600"
           className="w-full h-full"
           preserveAspectRatio="none"
         >
 
-          {/* Dégradé pour la vague */}
-          <defs>
-            <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#01497c" />   {/* bleu foncé */}
-              <stop offset="100%" stopColor="#00b4d8" /> {/* turquoise */}
-            </linearGradient>
-          </defs>
-                    
-          <path
-            fill="url(#oceanGradient)" //Couleur de la vague (actuellement bleu océan)
-            fillOpacity="1"
-            d="M0 397L21.5 412.8C43 428.7 86 460.3 128.8 474.2C171.7 488 214.3 484 257.2 474.8C300 465.7 343 451.3 385.8 452C428.7 452.7 471.3 468.3 514.2 472.8C557 477.3 600 470.7 642.8 460.8C685.7 451 728.3 438 771.2 444.3C814 450.7 857 476.3 878.5 489.2L900 502L900 601L878.5 601C857 601 814 601 771.2 601C728.3 601 685.7 601 642.8 601C600 601 557 601 514.2 601C471.3 601 428.7 601 385.8 601C343 601 300 601 257.2 601C214.3 601 171.7 601 128.8 601C86 601 43 601 21.5 601L0 601Z" //forme de la vague
-          ></path>
+        {/* Dégradé pour la vague */}
+      <defs>
+        {/* Dégradé principal */}
+        <linearGradient id="oceanGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#01497c" />
+          <stop offset="100%" stopColor="#00b4d8" />
+        </linearGradient>
+
+        {/* Dégradé secondaire (plus clair) */}
+        <linearGradient id="oceanGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#00b4d8" />
+          <stop offset="100%" stopColor="#90e0ef" />
+        </linearGradient>
+      </defs>
+
+      {/* Première vague (amplitude forte, couleur foncée) */}
+      <path fill="url(#oceanGradient1)" opacity="0.9">
+        <animate
+          attributeName="d"
+          dur="12s"
+          repeatCount="indefinite"
+          values="
+            M0 320C60 460,120 280,180 420C240 560,300 300,360 500C420 700,480 280,540 460C600 640,660 300,720 480C780 660,840 280,900 320V600H0Z;
+            M0 500C60 340,120 520,180 360C240 200,300 500,360 320C420 140,480 520,540 360C600 200,660 500,720 340C780 180,840 520,900 500V600H0Z;
+            M0 320C60 460,120 280,180 420C240 560,300 300,360 500C420 700,480 280,540 460C600 640,660 300,720 480C780 660,840 280,900 320V600H0Z
+          "
+        />
+      </path>
+
+      {/* Deuxième vague (plus claire et décalée dans le temps) */}
+      <path fill="url(#oceanGradient2)" opacity="0.6">
+        <animate
+          attributeName="d"
+          dur="16s"
+          begin="2s"
+          repeatCount="indefinite"
+          values="
+            M0 400C60 520,120 360,180 480C240 600,300 340,360 540C420 740,480 320,540 520C600 700,660 340,720 500C780 660,840 320,900 400V600H0Z;
+            M0 500C60 300,120 500,180 320C240 140,300 520,360 300C420 100,480 540,540 340C600 160,660 540,720 320C780 120,840 500,900 500V600H0Z;
+            M0 400C60 520,120 360,180 480C240 600,300 340,360 540C420 740,480 320,540 520C600 700,660 340,720 500C780 660,840 320,900 400V600H0Z
+          "
+        />
+      </path>
         </svg>
       </div>
 
