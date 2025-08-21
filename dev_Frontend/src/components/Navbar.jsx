@@ -45,8 +45,25 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="bg-white shadow-md fixed w-full z-20">
-      <div className="max-w mx-auto px-2 sm:px-4 lg:px-6">
+    <header className="relative bg-white shadow-md fixed w-full z-20">
+      {/*Vague en arriere-plan*/}
+      <div className="absolute inset-0 -z-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"          
+          viewBox="0 0 900 601"
+          className="w-full h-full"
+          preserveAspectRatio="none"
+        >
+          <path
+            fill="#0284c7" //Couleur de la vague (actuellement bleu océan)
+            fillOpacity="1"
+            d="M0 397L21.5 412.8C43 428.7 86 460.3 128.8 474.2C171.7 488 214.3 484 257.2 474.8C300 465.7 343 451.3 385.8 452C428.7 452.7 471.3 468.3 514.2 472.8C557 477.3 600 470.7 642.8 460.8C685.7 451 728.3 438 771.2 444.3C814 450.7 857 476.3 878.5 489.2L900 502L900 601L878.5 601C857 601 814 601 771.2 601C728.3 601 685.7 601 642.8 601C600 601 557 601 514.2 601C471.3 601 428.7 601 385.8 601C343 601 300 601 257.2 601C214.3 601 171.7 601 128.8 601C86 601 43 601 21.5 601L0 601Z" //forme de la vague
+          ></path>
+        </svg>
+      </div>
+
+      {/*Contenu de la Navbar*/}      
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
         <div className="flex justify-between items-center h-24">
           
           {/* Logo collé à gauche */}
