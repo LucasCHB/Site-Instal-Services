@@ -54,8 +54,17 @@ export default function Navbar() {
           className="w-full h-full"
           preserveAspectRatio="none"
         >
+
+          {/* Dégradé pour la vague */}
+          <defs>
+            <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#01497c" />   {/* bleu foncé */}
+              <stop offset="100%" stopColor="#00b4d8" /> {/* turquoise */}
+            </linearGradient>
+          </defs>
+                    
           <path
-            fill="#0284c7" //Couleur de la vague (actuellement bleu océan)
+            fill="url(#oceanGradient)" //Couleur de la vague (actuellement bleu océan)
             fillOpacity="1"
             d="M0 397L21.5 412.8C43 428.7 86 460.3 128.8 474.2C171.7 488 214.3 484 257.2 474.8C300 465.7 343 451.3 385.8 452C428.7 452.7 471.3 468.3 514.2 472.8C557 477.3 600 470.7 642.8 460.8C685.7 451 728.3 438 771.2 444.3C814 450.7 857 476.3 878.5 489.2L900 502L900 601L878.5 601C857 601 814 601 771.2 601C728.3 601 685.7 601 642.8 601C600 601 557 601 514.2 601C471.3 601 428.7 601 385.8 601C343 601 300 601 257.2 601C214.3 601 171.7 601 128.8 601C86 601 43 601 21.5 601L0 601Z" //forme de la vague
           ></path>
