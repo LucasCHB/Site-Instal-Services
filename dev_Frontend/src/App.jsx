@@ -5,8 +5,8 @@ import Homepage from './pages/Homepage';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Actus from './pages/Actus';
-import Portfolio from './pages/Portfolio';
-import Services from './pages/Services';
+import Projets from './pages/Projets';
+import Prestations from './pages/Prestations';
 import Legal from './pages/Legal';
 
 /* Import des composants */
@@ -23,8 +23,8 @@ function App() {;
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/actus" element={<Actus />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/projets" element={<Projets />} />
+          <Route path="/prestations" element={<Prestations />} />
           <Route path="/legal" element={<Legal />} />
         </Routes>
       </main>

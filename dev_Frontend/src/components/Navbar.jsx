@@ -39,8 +39,8 @@ export default function Navbar() {
 
   const navLinks = [
     { to: "/", label: "Accueil" },
-    { to: "/services", label: "Services" },
-    { to: "/portfolio", label: "Portfolio" },
+    { to: "/prestations", label: "Prestations" },
+    { to: "/projets", label: "Projets" },
     { to: "/actus", label: "Actualités" },
     { to: "/contact", label: "Contact" },
   ];
@@ -105,7 +105,7 @@ export default function Navbar() {
           <Link to="/" className="flex items-center">
             <img
               src={logo}
-              alt="Logo Instal Services"
+              alt="Logo Instal Prestations"
               className="h-[80px] w-auto mt-2.5 ml-0"
             />
           </Link>
