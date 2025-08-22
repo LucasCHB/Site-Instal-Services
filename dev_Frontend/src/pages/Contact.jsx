@@ -4,50 +4,81 @@ export default function Contact() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [phoneError, setPhoneError] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [errors, setErrors] = useState({}); // objet pour stocker les erreurs
+  const [messageError, setMessageError] = useState(""); // erreur spécifique pour le message
 
   const handleNameChange = (e) => {
-    //supprime tous ce qui n'est pas une lettre ou un espace
-    const value = e.target.value.replace(/[^A-Za-z ]/g, "");
+    let value = e.target.value.replace(/[^A-Za-z ]/g, "");
+    value = value.replace(/  +/g, " ");
     setName(value);
+
+    const spaceCount = (value.match(/ /g) || []).length;
+    setErrors((prev) => ({
+      ...prev,
+      name:
+        spaceCount === 1 || value === ""
+          ? ""
+          : "Le nom doit contenir exactement un espace entre prénom et nom",
+    }));
   };
 
-    // Filtre : chiffres + espaces
-    //Uniquement 10 chiffres
   const handlePhoneChange = (e) => {
-    let digits = e.target.value.replace(/[^0-9 ]/g, "");
-    if (digits.length > 10) digits = digits.slice(0, 10);
-    setPhone(digits);
-
-    //Vérification Live du format
-    if (digut.length!== 10){
-      setPhoneError("Le numéro de téléphone doit contenir exactement 10 chiffres.");
-    } else {
-      setPhoneError("");
-    }
+    let digits = e.target.value.replace(/[^0-9]/g, "").slice(0, 10);
+    let formatted = digits.replace(/(\d{2})(?=\d)/g, "$1 ");
+    setPhone(formatted);
+    setErrors((prev) => ({ ...prev, phone: "" }));
   };
 
   const handleEmailChange = (e) => {
     const value = e.target.value;
     setEmail(value);
+    setErrors((prev) => ({ ...prev, email: "" }));
+  };
 
-    //regex pour l'email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (value && !emailRegex.test(value)){
-      setEmailError("Adresse email invalide");
+  const handleMessageChange = (e) => {
+    const value = e.target.value;
+    setMessage(value);
+
+    if (value.length < 50) {
+      setMessageError("Le message doit contenir au moins 50 caractères");
     } else {
-      setEmailError("");
+      setMessageError("");
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (emailError || phoneError) {
-      alert("Veuillez corriger les erreurs avant de soumettre le formulaire.");
-      return;
+    let newErrors = {};
+
+    // Validation nom
+    if (!name.trim()) newErrors.name = "Veuillez remplir ce champ";
+    else {
+      const spaceRegex = /^[A-Za-z]+ [A-Za-z]+$/;
+      if (!spaceRegex.test(name.trim()))
+        newErrors.name =
+          "Le nom doit contenir exactement un espace entre prénom et nom";
     }
-    alert("Votre demande a bien été envoyée!");
+
+    // Validation téléphone
+    if (phone.replace(/\s/g, "").length !== 10)
+      newErrors.phone = "Veuillez entrer 10 chiffres";
+
+    // Validation email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email))
+      newErrors.email = "Veuillez entrer un email valide";
+
+    // Validation message
+    if (!message || message.length < 50)
+      newErrors.message = "Le message doit contenir au moins 50 caractères";
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      alert("Votre demande a bien été envoyée!");
+    }
   };
 
   return (
@@ -59,31 +90,37 @@ export default function Contact() {
         <p className="text-center text-gray-600 mb-10 select-none">
           Remplissez le formulaire ci-dessous et nous vous recontacterons rapidement.
         </p>
+
         <form className="space-y-6" onSubmit={handleSubmit}>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 select-none">Nom complet</label>
-              <input
-                type="text"
-                placeholder="Jean Dupont"
-                className="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 text-black"
-                value={name}
-                onChange={handleNameChange}                
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 select-none">Téléphone</label>
-              <input
-                type="tel"
-                placeholder="06 12 34 56 78"
-                className="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 text-black"
-                value={phone}
-                onChange={handlePhoneChange}
-              />
-            </div>
+          {/* Nom */}
+          <div>
+            {errors.name && <p className="text-red-500 text-sm mb-1">{errors.name}</p>}
+            <label className="block text-sm font-medium text-gray-700 select-none">Nom complet</label>
+            <input
+              type="text"
+              placeholder="Jean Dupont"
+              className="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 text-black"
+              value={name}
+              onChange={handleNameChange}
+            />
           </div>
 
+          {/* Téléphone */}
           <div>
+            {errors.phone && <p className="text-red-500 text-sm mb-1">{errors.phone}</p>}
+            <label className="block text-sm font-medium text-gray-700 select-none">Téléphone</label>
+            <input
+              type="tel"
+              placeholder="06 12 34 56 78"
+              className="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 text-black"
+              value={phone}
+              onChange={handlePhoneChange}
+            />
+          </div>
+
+          {/* Email */}
+          <div>
+            {errors.email && <p className="text-red-500 text-sm mb-1">{errors.email}</p>}
             <label className="block text-sm font-medium text-gray-700 select-none">Email</label>
             <input
               type="email"
@@ -94,12 +131,18 @@ export default function Contact() {
             />
           </div>
 
+          {/* Message */}
           <div>
+            {(errors.message || messageError) && (
+              <p className="text-red-500 text-sm mb-1">{errors.message || messageError}</p>
+            )}
             <label className="block text-sm font-medium text-gray-700 select-none">Message</label>
             <textarea
               rows="5"
               placeholder="Décrivez votre projet de piscine..."
               className="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 text-black"
+              value={message}
+              onChange={handleMessageChange}
             ></textarea>
           </div>
 
@@ -112,5 +155,5 @@ export default function Contact() {
         </form>
       </div>
     </section>
-  )
+  );
 }
