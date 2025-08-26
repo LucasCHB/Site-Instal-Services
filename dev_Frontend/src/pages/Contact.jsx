@@ -53,6 +53,7 @@ export default function Contact() {
     let newErrors = {};
 
     // Validation nom
+    
     if (!name.trim()) newErrors.name = "Veuillez remplir ce champ";
     else {
       const spaceRegex = /^[A-Za-z]+ [A-Za-z]+$/;
