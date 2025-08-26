@@ -83,7 +83,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="bg-gradient-to-br from-blue-50 to-teal-50 py-16 px-6" id="contact">
+    <section className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-blue-50 to-teal-50 py-16 px-6" id="contact">
       <div className="max-w-3xl mx-auto bg-white shadow-xl rounded-2xl p-8 md:p-12">
         <h2 className="text-3xl font-bold text-center text-teal-700 mb-6 select-none">
           Demandez votre devis gratuit
@@ -92,14 +92,14 @@ export default function Contact() {
           Remplissez le formulaire ci-dessous et nous vous recontacterons rapidement.
         </p>
 
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form className="space-y-6 max-w-lg mx-auto" onSubmit={handleSubmit}>
           {/* Nom */}
           <div>
             {errors.name && <p className="text-red-500 text-sm mb-1">{errors.name}</p>}
             <label className="block text-sm font-medium text-gray-700 select-none">Nom complet</label>
             <input
               type="text"
-              placeholder="Jean Dupont"
+              placeholder="Saisissez votre Nom Prénom"
               className="mt-1 w-full rounded-xl border-gray-300 shadow-sm focus:border-teal-500 focus:ring-teal-500 text-black"
               value={name}
               onChange={handleNameChange}
