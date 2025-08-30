@@ -68,7 +68,7 @@ export default function Homepage() {
           }
         }}
         viewport={{ once: true }}
-        className="w-screen mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-cover bg-center"
+        className="w-screen mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-cover bg-center pb-25"
         style={{ backgroundImage: `url("${eau}")` }}
       >
 
