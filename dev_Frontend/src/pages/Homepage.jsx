@@ -148,15 +148,15 @@ export default function Homepage() {
           >
             <Link
               to="/contact"
-              className="group bg-teal-600 hover:bg-teal-700 text-white font-semibold rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 text-[clamp(0.9rem,2.2vw,1.1rem)] py-[clamp(0.8rem,1.8vw,1.2rem)] px-[clamp(1.2rem,3.5vw,2rem)] flex items-center justify-center gap-2"
+              className="group bg-white hover:bg-teal-400  text-black font-semibold rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 text-[clamp(0.9rem,2.2vw,1.1rem)] py-[clamp(0.8rem,1.8vw,1.2rem)] px-[clamp(1.2rem,3.5vw,2rem)] flex items-center justify-center gap-2"
             >
-              <Phone className="w-5 h-5" />
+              <Phone className="text-black w-5 h-5" />
               Demander un devis gratuit
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-black" />
             </Link>
             <Link
               to="/Projets"
-              className="group bg-white/95 hover:bg-white text-teal-700 font-semibold rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 text-[clamp(0.9rem,2.2vw,1.1rem)] py-[clamp(0.8rem,1.8vw,1.2rem)] px-[clamp(1.2rem,3.5vw,2rem)] flex items-center justify-center gap-2"
+              className="group bg-white/95 hover:bg-teal-400 text-teal-700 font-semibold rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105 text-[clamp(0.9rem,2.2vw,1.1rem)] py-[clamp(0.8rem,1.8vw,1.2rem)] px-[clamp(1.2rem,3.5vw,2rem)] flex items-center justify-center gap-2"
             >
               <Users className="w-5 h-5" />
               Voir nos réalisations
@@ -534,21 +534,21 @@ export default function Homepage() {
             <div className="flex flex-col items-center">
               <Phone className="w-12 h-12 mb-4" />
               <h3 className="text-lg font-semibold mb-2">Appelez-nous</h3>
-              <a href="tel:+33123456789" className="text-lg hover:underline text-white">
+              <a href="tel:+33123456789" className="bg-white border border-gray-200 hover:border-teal-300 text-teal-600 hover:text-teal-700 transition-all duration-300 px-4 py-2 rounded-lg shadow-sm hover:shadow-md text-sm font-medium">
                 01 23 45 67 89
               </a>
             </div>
             <div className="flex flex-col items-center">
               <Mail className="w-12 h-12 mb-4" />
               <h3 className="text-lg font-semibold mb-2">Email</h3>
-              <a href="mailto:contact@instal-services.fr" className="text-lg hover:underline">
+              <a href="mailto:contact@instal-services.fr" className="bg-white border border-gray-200 hover:border-teal-300 text-teal-600 hover:text-teal-700 transition-all duration-300 px-4 py-2 rounded-lg shadow-sm hover:shadow-md text-sm font-medium">
                 contact@instal-services.fr
               </a>
             </div>
             <div className="flex flex-col items-center">
               <MapPin className="w-12 h-12 mb-4" />
               <h3 className="text-lg font-semibold mb-2">Zone d'intervention</h3>
-              <p className="text-lg">Gironde et alentours</p>
+              <p className="text-lg">Rhône-Alpes et alentours</p>
             </div>
           </motion.div>
 
@@ -568,8 +568,8 @@ export default function Homepage() {
               Devis gratuit en 24h
             </Link>
             <Link
-              to="/services"
-              className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-teal-600 transition-colors flex items-center justify-center gap-2"
+              to="/Prestations"
+              className="border-2 border-white bg-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-teal-600 transition-colors flex items-center justify-center gap-2"
             >
               <Wrench className="w-5 h-5" />
               Découvrir nos services
