@@ -5,6 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: "/Site-Instal-Services/",
   plugins: [react(),tailwindcss()],
   server: {
     proxy: {
